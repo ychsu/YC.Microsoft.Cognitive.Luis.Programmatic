@@ -104,8 +104,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
             var response = await httpClient.SendAsync(request);
             var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
-            return JsonConvert.DeserializeObject<ClosedList>(str);
+			return JsonConvert.DeserializeObject<ClosedList>(str);
         }
 
         async Task<Entity> IEntityClient.GetEntityAsync(Guid id)
@@ -116,8 +120,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
             var response = await httpClient.SendAsync(request);
             var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
-            return JsonConvert.DeserializeObject<Entity>(str);
+			return JsonConvert.DeserializeObject<Entity>(str);
         }
 
         async Task<IEnumerable<TrainingStatusResult>> ITrainClient.GetTrainStatusAsync()
@@ -128,8 +136,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
             var response = await httpClient.SendAsync(request);
             var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
-            return JsonConvert.DeserializeObject<IEnumerable<TrainingStatusResult>>(str);
+			return JsonConvert.DeserializeObject<IEnumerable<TrainingStatusResult>>(str);
         }
 
         async Task<IEnumerable<ClosedList>> IEntityClient.ListClosedListsAsync()
@@ -140,8 +152,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
             var response = await httpClient.SendAsync(request);
             var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
-            return JsonConvert.DeserializeObject<IEnumerable<ClosedList>>(str);
+			return JsonConvert.DeserializeObject<IEnumerable<ClosedList>>(str);
         }
 
         async Task<IEnumerable<Entity>> IEntityClient.ListEntitiesAsync()
@@ -152,8 +168,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
             var response = await httpClient.SendAsync(request);
             var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
-            return JsonConvert.DeserializeObject<IEnumerable<Entity>>(str);
+			return JsonConvert.DeserializeObject<IEnumerable<Entity>>(str);
         }
 
         async Task<TrainResult> ITrainClient.TrainAsync()
@@ -165,7 +185,11 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
             var response = await httpClient.SendAsync(request);
             var str = await response.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<TrainResult>(str);
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
+			return JsonConvert.DeserializeObject<TrainResult>(str);
 		}
 
 		async Task ITrainClient.PublishAsync(Regions region, bool isStaging)
@@ -182,6 +206,10 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
 			var response = await httpClient.SendAsync(request);
 			var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 		}
 
 		async Task<Guid> IEntityClient.CreateClosedListAsync(ClosedList list)
@@ -193,8 +221,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
             var response = await httpClient.SendAsync(request);
             var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
-            return JsonConvert.DeserializeObject<Guid>(str);
+			return JsonConvert.DeserializeObject<Guid>(str);
         }
 
         async Task<Guid> IEntityClient.CreateEntityAsync(Entity entity)
@@ -206,8 +238,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
             var response = await httpClient.SendAsync(request);
             var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
-            return JsonConvert.DeserializeObject<Guid>(str);
+			return JsonConvert.DeserializeObject<Guid>(str);
         }
 
         async Task<bool> IEntityClient.PatchClosedListAsync(Guid id, ClosedList list)
@@ -218,6 +254,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
             request.Content = new JsonContent<ClosedList>(list);
 
             var response = await httpClient.SendAsync(request);
+			var str = await response.Content.ReadAsStringAsync();
+
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
 			return response.IsSuccessStatusCode;
         }
@@ -231,6 +273,10 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
             var response = await httpClient.SendAsync(request);
 			var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 			return response.IsSuccessStatusCode;
 		}
 
@@ -242,6 +288,11 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
             request.Content = new JsonContent<Entity>(entity);
 
             var response = await httpClient.SendAsync(request);
+            var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
 			return response.IsSuccessStatusCode;
 		}
@@ -253,6 +304,11 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
             request.Headers.Add(Consts.SubscriptionHeaderKey, SubscriptionKey);
 
             var response = await httpClient.SendAsync(request);
+            var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
 			return response.IsSuccessStatusCode;
 		}
@@ -264,6 +320,11 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
             request.Headers.Add(Consts.SubscriptionHeaderKey, SubscriptionKey);
 
             var response = await httpClient.SendAsync(request);
+            var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
 			return response.IsSuccessStatusCode;
 		}
@@ -280,8 +341,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
             var response = await httpClient.SendAsync(request);
             var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
-            return JsonConvert.DeserializeObject<Guid>(str);
+			return JsonConvert.DeserializeObject<Guid>(str);
         }
 
         async Task<IEnumerable<Intent>> IIntentClient.ListAsync()
@@ -292,8 +357,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
             var response = await httpClient.SendAsync(request);
             var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
-            return JsonConvert.DeserializeObject<IEnumerable<Intent>>(str);
+			return JsonConvert.DeserializeObject<IEnumerable<Intent>>(str);
         }
 
         async Task<Intent> IIntentClient.GetAsync(Guid id)
@@ -304,8 +373,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
 
             var response = await httpClient.SendAsync(request);
             var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
 
-            return JsonConvert.DeserializeObject<Intent>(str);
+			return JsonConvert.DeserializeObject<Intent>(str);
         }
 
         async Task IIntentClient.UpdateAsync(Guid id, string name)
@@ -319,7 +392,12 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
             });
 
             var response = await httpClient.SendAsync(request);
-        }
+            var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
+		}
 
         async Task IIntentClient.DeleteAsync(Guid id)
         {
@@ -328,6 +406,11 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic
             request.Headers.Add(Consts.SubscriptionHeaderKey, SubscriptionKey);
 
             var response = await httpClient.SendAsync(request);
-        }
+            var str = await response.Content.ReadAsStringAsync();
+			if (response.IsSuccessStatusCode == false)
+			{
+				throw new LuisIntegrateException(str);
+			}
+		}
 	}
 }

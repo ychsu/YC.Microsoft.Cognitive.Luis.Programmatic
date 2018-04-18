@@ -25,7 +25,11 @@ namespace YC.Microsoft.Cognitive.Luis.Programmatic.Models
 
         private static string GetContentString(T entity)
         {
-            return JsonConvert.SerializeObject(entity);
+            var str = JsonConvert.SerializeObject(entity);
+
+			Console.WriteLine(str);
+
+			return str;
         }
     }
 }
