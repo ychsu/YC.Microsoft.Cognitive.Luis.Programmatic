@@ -1,4 +1,4 @@
-# YC.FTP
+# YC.Microsoft.Cognitive.Luis.Programmatic
 
 ## 描述
-FTP (支援FTPS) 操作
+Luis api的呼叫
