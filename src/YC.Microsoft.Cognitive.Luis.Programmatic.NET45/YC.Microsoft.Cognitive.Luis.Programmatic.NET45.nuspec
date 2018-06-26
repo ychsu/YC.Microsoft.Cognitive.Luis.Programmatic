@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <package >
 	<metadata>
-		<id>YC.Microsoft.Cognitive.Luis.Programmatic</id>
-		<version>0.5.0</version>
+		<id>$id$</id>
+		<version>$version$</version>
 		<title>YC.Microsoft.Cognitive.Luis.Programmatic</title>
 		<description>LUIS</description>
 		<authors>YC</authors>
@@ -18,8 +18,4 @@
 			<dependency id="Newtonsoft.Json" version="10.0.3" />
 		</dependencies>
 	</metadata>
-	<files>
-		<!-- <file src="NPOI.DumpExcel\bin\Release\NPOI.DumpExcel.*" target="lib\net45\" /> -->
-		<file src="YC.Microsoft.Cognitive.Luis.Programmatic.NET45\bin\Release\YC.Microsoft.Cognitive.Luis.Programmatic.*" target="lib\net45\" />
-	</files>
 </package>
